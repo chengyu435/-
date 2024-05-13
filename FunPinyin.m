@@ -1,36 +1,7 @@
-
-function [quanpin,firstword] = FunPinyin(w)
-
-error(nargchk(1,1, nargin, 'struct'));
-
+w='程宇';
 [pinyin,word] = FunDictionary;
-
-n = length(w);
-
+dic=dictionary(pinyin,word);
 quanpin = [];
-for i = 1:n
-    for j = 1:399
-        if regexp(word(j),w(i))
-            quanpin = [quanpin,pinyin(j)];
-        else
-            continue;
-        end
-    end
+for i = 1:length(w)
+    quanpin = [quanpin,pinyin(find(contains(word, w(i))))];
 end
-
-
-if isempty(quanpin)
-    firstword = [];
-    warning('Please check the input message.');
-    return;
-end
-
-quanpin =strjoin(quanpin,' ');
-
-m = length(quanpin);
-
-for i = 1:m
-    single = char(quanpin(i));
-    firstword(i) = upper(single(1));
-end;clear i
-
