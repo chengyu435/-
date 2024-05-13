@@ -1,4 +1,4 @@
-w='程宇';
+w='李明';
 [pinyin,word] = FunDictionary;
 dic=dictionary(pinyin,word);
 quanpin = [];
